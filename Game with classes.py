@@ -1,4 +1,4 @@
-import random
+import random, time, text
 class Hero:
     '''Этот класс описывает героя.'''
     
@@ -55,16 +55,7 @@ def choose_chel() -> Hero:
     'Воин':Warrior,
     'Целитель':Hiler
     }
-    ch=input('Здравствуй мудрый путник\n'
-    'Ты начал игру The longest ECHPECHMAK(in HEGROPROM)\n'
-    'Выбери класс:\n\n'
-    'Маг — наносит много урона, но не имеет\n'
-    'Много здоровья. Для выбора напиши Маг.\n\n'
-    'Воин — сбалансирован\n'
-    'Но не учён. Для выбора напиши Воин.\n\n'
-    'Целитель — наносит много, но не имеет достаточно\n'
-    'Здоровья. Для выбора напиши Целитель.\n\n'
-    )   
+    ch=input(text.START_TEXT)   
     return c[ch](input('Введите имя: ')) 
 
 
@@ -77,7 +68,9 @@ def train(char1):
     print(f'Приветствую тебя {char1.name}! Рад познакомиться.\n'
     f'Тебе предстоит пройти подготовку боем.\n')
     actionx=input(f'Напишите\n "а" для атаки с помощью {char1.BASE_WP}\n\n\n')
-    print(att[actionx])
+    if actionx in att:
+        print(att[actionx])
+
 if __name__ == '__main__':
     char = choose_chel()
     train(char)
