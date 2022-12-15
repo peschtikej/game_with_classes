@@ -70,18 +70,20 @@ def choose_chel() -> Hero:
 
 
 def train(char1):
-    att={
-        'а': char.attack(), 
-        'уу': char.ulta()
-        }
-    MANEKEN=500    
-    
-    print(f'Приветствую тебя {char1.name}! Рад познакомиться.\n'
-    f'Тебе предстоит пройти подготовку боем.\n')
-    actionx=input(f'Напишите\n "а" для атаки\n'
-    f'"уу" для ульты\n\n\n')
-    if actionx in att:
-        print(att[actionx])
+    actionx=None
+    while actionx != 'skip':
+        att={
+            'а': char.attack(), 
+            'уу': char.ulta()
+            }
+        MANEKEN=500    
+        
+        print(f'Приветствую тебя {char1.name}! Рад познакомиться.\n'
+        f'Тебе предстоит пройти подготовку боем.\n')
+        actionx=input(f'Напишите\n "а" для атаки\n'
+        f'"уу" для ульты\n\n\n')
+        if actionx in att:
+            print(att[actionx])
 
 if __name__ == '__main__':
     char = choose_chel()
