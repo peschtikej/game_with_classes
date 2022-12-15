@@ -66,25 +66,25 @@ def choose_chel() -> Hero:
     'Целитель':Hiler
     }
     ch=input(text.START_TEXT)   
-    return c[ch](input('Введите имя: ')) 
+    return c[ch](input('Введите имя: \n'))
 
 
 def train(char1):
+    MANEKEN=500
+    print(f'Приветствую тебя {char1.name}! Рад познакомиться.\n'
+        f'Тебе предстоит пройти подготовку боем.\n')
+        
+    actionx=input(f'Напишите\n "а" для атаки\n'
+        f'"уу" для ульты\n'
+        f'Если вы уже знаете как играть\n'
+        f'То напишите "skip"\n\n\n'
+        )
     actionx=None
     while actionx != 'skip':
         att={
             'а': char.attack(), 
             'уу': char.ulta()
             }
-        MANEKEN=500    
-        
-        print(f'Приветствую тебя {char1.name}! Рад познакомиться.\n'
-        f'Тебе предстоит пройти подготовку боем.\n')
-        actionx=input(f'Напишите\n "а" для атаки\n'
-        f'"уу" для ульты\n'
-        f'Если вы уже знаете как играть\n'
-        f'То напишите "skip"\n\n\n'
-        )
         if actionx in att:
             print(att[actionx])
 
