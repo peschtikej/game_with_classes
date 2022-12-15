@@ -66,7 +66,7 @@ def choose_chel() -> Hero:
     'Целитель':Hiler
     }
     ch=input(text.START_TEXT)   
-    return c[ch](input('Введите имя: \n\n')) 
+    return c[ch](input('Введите имя: ')) 
 
 
 def train(char1):
