@@ -4,7 +4,6 @@ class Hero:
     
     
     BASE_HP=1000
-    RANGE_ATTACK=(random.randint(75, 125)/100)
     DMG=100
     BASE_WP='GUN'
     ULTA='ULTIMATE_UDAR'
@@ -22,9 +21,9 @@ class Hero:
         f'И наношу {self.DMG} урона')
     
     def attack(self) -> int:    
-        return int(self.RANGE_ATTACK*self.DMG)+1
+        return int((random.randint(75, 125)/100)*self.DMG)+1
     def ulta(self) -> int:
-        return int(self.RANGE_ATTACK*self.ULTA_DMG)+1
+        return int((random.randint(75, 125)/100)*self.ULTA_DMG)+1
 
 
 class Mage(Hero):
@@ -74,7 +73,7 @@ def train(char1):
     print(f'Приветствую тебя {char1.name}! Рад познакомиться.\n'
         f'Тебе предстоит пройти подготовку боем.\n')
         
-    actionx=input(f'Напишите\n "а" для атаки\n'
+    print(f'Напишите\n "а" для атаки\n'
         f'"уу" для ульты\n'
         f'Если вы уже знаете как играть\n'
         f'То напишите "skip"\n\n\n'
@@ -84,7 +83,8 @@ def train(char1):
         att={
             'а': char.attack(), 
             'уу': char.ulta()
-            }
+        }
+        actionx=input()
         if actionx in att:
             print(att[actionx])
 
