@@ -6,11 +6,13 @@ import time
 import pygame
 
 pygame.init()
+W, H=600, 400
 class Hero:
     '''Этот класс описывает героя.'''
     
     
     SKIN=pygame.image.load('pics\просто красивый замок.jpg').convert()
+    SKIN_RECT=SKIN.get_rect(center=(W//2, H//2))
     BASE_HP=1000
     DMG=100
     BASE_WP='GUN'
@@ -39,6 +41,7 @@ class Mage(Hero):
 
 
     SKIN=pygame.image.load('pics\маг.jpg').convert()
+    SKIN_RECT=SKIN.get_rect(center=(W//2, H//2))
     DMG=400
     BASE_WP='Молния'
     BASE_HP=500
@@ -51,6 +54,7 @@ class Warrior(Hero):
     
     
     SKIN=pygame.image.load('pics\воин с мечом в замке смотрит на солнце.jpg').convert()
+    SKIN_RECT=SKIN.get_rect(center=(W//2, H//2))
     DMG=100
     BASE_WP='Меч'
     BASE_HP=1500
@@ -62,6 +66,7 @@ class Hiler(Hero):
     
     
     SKIN=pygame.image.load('pics\аниме с палкой на фоне реки и леса.jpg').convert()
+    SKIN_RECT=SKIN.get_rect(center=(W//2, H//2))
     DMG=50
     BASE_WP='Палкой в животик'
     BASE_HP=1000
@@ -73,10 +78,15 @@ class Badmalaj(Hero):
     '''Это класс врага.'''
     
     SKIN=pygame.image.load('pics\бэдбой.jpg').convert()
+    SKIN_RECT=SKIN.get_rect(center=(W//2, H//2))
     DMG=100
     BASE_WP='Камень в лицо'
     BASE_HP=250
 
+sc=pygame.display.set_mode((600, 400))
+pygame.display.set_caption('The longest ECHPECHMAK(in AGROPROM)')
+clock=pygame.time.Clock()
+FPS=60
 
 def choose_chel() -> Hero:
     c={
@@ -108,6 +118,9 @@ def train(char1):
         if actionx in att:
             print(att[actionx])
 
-if __name__ == '__main__':
-    char = choose_chel()
-    train(char)
+while True:
+    for event in pygame.event.get():
+        if event.type==pygame.QUIT:
+            exit()
+    Character=choose_chel()
+    sc.blit(Character.SKIN)        
