@@ -7,6 +7,12 @@ import pygame
 
 pygame.init()
 W, H=600, 400
+sc=pygame.display.set_mode((600, 400))
+pygame.display.set_caption('The longest ECHPECHMAK(in AGROPROM)')
+clock=pygame.time.Clock()
+FPS=60
+
+
 class Hero:
     '''Этот класс описывает героя.'''
     
@@ -123,4 +129,6 @@ while True:
         if event.type==pygame.QUIT:
             exit()
     Character=choose_chel()
-    sc.blit(Character.SKIN)        
+    sc.blit(Character.SKIN, Character.SKIN_RECT) 
+    pygame.display.update()
+    clock.tick(FPS)       
